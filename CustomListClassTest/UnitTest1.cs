@@ -1,6 +1,7 @@
 using System;
 using CustomClassListProject;
 using NUnit.Framework;
+using FluentAssertions;
 
 namespace Tests
 {
@@ -57,53 +58,90 @@ namespace Tests
             test.Add(1);
             test.Add(2);
             int expected = 3;
-            int count = 2;
             int actual;
 
             // act
             test.Add(3);
-            actual = count;
+            actual = test[2];
 
             // assert
             Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        public void Indexer_GettingValueOfIndexNotExists_ThrowsError()
+        public void Add_AddItemsToListMoreThanCurrentCapacity_CapacityIncreases()
         {
-            // Arrange
+            // arrange
             CustomClassList<int> test = new CustomClassList<int>();
             test.Add(1);
             test.Add(2);
             test.Add(3);
             test.Add(4);
-            int index;
-            // Act
-            index = test[5];
-            // Assert
-            
+            int expected = 8;
+            int actual;
+
+            // act
+            test.Add(5);
+            actual = test.Capacity;
+
+            // assert
+            Assert.AreEqual(expected, actual);
         }
 
-        // [Test]
-        // public void Add_AddItemOverCapacityLimit_ThrowsError()
-        // {
-        //     // arrange
-        //     CustomClassList<int> test = new CustomClassList<int>();
-        //     test.Add(1);
-        //     test.Add(2s);
-        //     test.Add(3);
-        //     test.Add(4);
-        //     test.Add(5);
-        //     bool expected = true;
-        //     bool actual;
+        [Test]
+        public void Add_AddItemsToListMoreThanCurrentCapacity_GoesToNextIndex()
+        {
+            // arrange
+            CustomClassList<int> test = new CustomClassList<int>();
+            test.Add(1);
+            test.Add(2);
+            test.Add(3);
+            test.Add(4);
+            int expected = 5;
+            int actual;
 
-        //     // act
-        //     test.Add(6);
-        //     actual = test.isOverCapacity;
+            // act
+            test.Add(5);
+            actual = test[4];
 
-        //     // assert
-        //     Assert.AreEqual(expected, actual);
-        // }
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        // This is what I did instead of that
+        [Test]
+        public void Indexer_GettingValueOfIndexNotExists_ThrowsError()
+        {
+            // Arrange
+            CustomClassList<int> test = new CustomClassList<int>();
+            test.Add(0);
+            test.Add(1);
+            test.Add(2);
+            test.Add(3);
+
+            // Act
+            Action act = () => test.Add(4);
+
+            // Assert
+            act.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [Test]
+        public void Add_AddItemOverCapacityLimit_ThrowsError()
+        {
+            // arrange
+            CustomClassList<int> test = new CustomClassList<int>();
+            test.Add(1);
+            test.Add(2);
+            test.Add(3);
+            test.Add(4);
+
+            // act
+            Action act = () => test.Add(5);
+
+            // assert
+            
+        }
 
         // [Test]
         // public void Add_AddToEmptyList_CountGoesUpByOne()
