@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace CustomClassListProject
 {
@@ -21,7 +20,19 @@ namespace CustomClassListProject
         {
             get
             {
-                return customList[index];
+                try
+                {
+                    if (index > count - 1) {
+                        throw new IndexOutOfRangeException("Nope");
+                    }
+                    else {
+                        return customList[index];
+                    }
+                }
+                catch(IndexOutOfRangeException)
+                {
+                    Console.WriteLine("Couldn't find entered index.");
+                }
             }
             set
             {
@@ -40,9 +51,16 @@ namespace CustomClassListProject
         // member variables
         public void Add(T item)
         {
+            T[] temporaryList;
             if(capacity == count){
                 capacity *= 2;
+                temporaryList = new T[capacity];
+                for (int i = 0; i < count; i++)
+                {
+                    temporaryList[i] = customList[i];
+                }
                 customList = new T[capacity];
+                customList = temporaryList;
             }
 
             customList[count] = item;
@@ -51,8 +69,22 @@ namespace CustomClassListProject
 
         public bool Remove(T item)
         {
-            
-            return false;
+            bool isFound = false;
+            for (int i = 0; i < count; i++)
+            {
+                dynamic x = customList[i];
+                dynamic y = item;
+                if (x == y) {
+                    isFound = true;
+                    count--;
+                    for (int j = i; j < count; j++)
+                    {
+                        customList[j] = customList[j + 1];
+                    }
+                    break;
+                }
+            }
+            return isFound;
         }
     }
 }
