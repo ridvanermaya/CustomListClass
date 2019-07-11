@@ -5,7 +5,7 @@ using FluentAssertions;
 
 namespace Tests
 {
-    public class Tests
+    public class AddTests
     {
         [SetUp]
         public void Setup()

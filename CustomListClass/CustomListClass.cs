@@ -41,12 +41,18 @@ namespace CustomClassListProject
         public void Add(T item)
         {
             if(capacity == count){
-                capacity = capacity * 2;
+                capacity *= 2;
                 customList = new T[capacity];
             }
 
             customList[count] = item;
             count++;
+        }
+
+        public bool Remove(T item)
+        {
+            
+            return false;
         }
     }
 }
