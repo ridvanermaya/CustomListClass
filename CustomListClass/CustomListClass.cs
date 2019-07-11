@@ -1,42 +1,52 @@
 using System;
+using System.Collections.Generic;
 
 namespace CustomClassListProject
 {
     public class CustomClassList<T>
     {
-        CustomClassList<T> customClassList = new CustomClassList<T>();
-        private int count = 0;
+        T[] customList;
+        private int count;
         public int Count
         {
             get { return count; }
         }
-        private int capacity = 4;
+        private int capacity;
         public int Capacity
         {
             get { return capacity; }
         }
-        
+
         public T this[int index]
         {
             get
             {
-                return customClassList[index];
+                return customList[index];
             }
             set
             {
-                customClassList[index] = value;
+                customList[index] = value;
             }
         }
 
-        // Constructor
+        // constructor
         public CustomClassList()
         {
-            CustomClassList<T> customClassList = new CustomClassList<T>();
+            capacity = 4;
+            customList = new T[capacity];
+            count = 0;
         }
 
+        // member variables
         public void Add(T item)
         {
-            customClassList[0] = item;
+            if(capacity == count){
+                capacity = capacity * 2;
+                customList = new T[capacity];
+            }
+
+            customList[count] = item;
+            count++;
         }
     }
 }

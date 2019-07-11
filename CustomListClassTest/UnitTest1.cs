@@ -73,15 +73,15 @@ namespace Tests
         {
             // arrange
             CustomClassList<int> test = new CustomClassList<int>();
+            test.Add(0);
             test.Add(1);
             test.Add(2);
             test.Add(3);
-            test.Add(4);
             int expected = 8;
             int actual;
 
             // act
-            test.Add(5);
+            test.Add(4);
             actual = test.Capacity;
 
             // assert
@@ -108,40 +108,40 @@ namespace Tests
             Assert.AreEqual(expected, actual);
         }
 
-        // This is what I did instead of that
-        [Test]
-        public void Indexer_GettingValueOfIndexNotExists_ThrowsError()
-        {
-            // Arrange
-            CustomClassList<int> test = new CustomClassList<int>();
-            test.Add(0);
-            test.Add(1);
-            test.Add(2);
-            test.Add(3);
+        // // This is what I did instead of that
+        // [Test]
+        // public void Indexer_GettingValueOfIndexNotExists_ThrowsError()
+        // {
+        //     // Arrange
+        //     CustomClassList<int> test = new CustomClassList<int>();
+        //     test.Add(0);
+        //     test.Add(1);
+        //     test.Add(2);
+        //     test.Add(3);
 
-            // Act
-            Action act = () => test.Add(4);
+        //     // Act
+        //     Action act = () => test.Add(4);
 
-            // Assert
-            act.Should().Throw<ArgumentOutOfRangeException>();
-        }
+        //     // Assert
+        //     act.Should().Throw<ArgumentOutOfRangeException>();
+        // }
 
-        [Test]
-        public void Add_AddItemOverCapacityLimit_ThrowsError()
-        {
-            // arrange
-            CustomClassList<int> test = new CustomClassList<int>();
-            test.Add(1);
-            test.Add(2);
-            test.Add(3);
-            test.Add(4);
+        // [Test]
+        // public void Add_AddItemOverCapacityLimit_ThrowsError()
+        // {
+        //     // arrange
+        //     CustomClassList<int> test = new CustomClassList<int>();
+        //     test.Add(1);
+        //     test.Add(2);
+        //     test.Add(3);
+        //     test.Add(4);
 
-            // act
-            Action act = () => test.Add(5);
+        //     // act
+        //     Action act = () => test.Add(5);
 
-            // assert
+        //     // assert
             
-        }
+        // }
 
         // [Test]
         // public void Add_AddToEmptyList_CountGoesUpByOne()
