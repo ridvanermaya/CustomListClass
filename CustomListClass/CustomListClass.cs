@@ -20,18 +20,11 @@ namespace CustomClassListProject
         {
             get
             {
-                try
-                {
-                    if (index > count - 1) {
-                        throw new IndexOutOfRangeException("Nope");
-                    }
-                    else {
-                        return customList[index];
-                    }
+                if (index > count - 1 || index < 0) {
+                    throw new ArgumentOutOfRangeException("Nope");
                 }
-                catch(IndexOutOfRangeException)
-                {
-                    Console.WriteLine("Couldn't find entered index.");
+                else {
+                    return customList[index];
                 }
             }
             set
