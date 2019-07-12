@@ -10,6 +10,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
+            
         }
 
         // Adding an item to an empty list, item should go to index[0] (X)
@@ -107,75 +108,5 @@ namespace Tests
             // assert
             Assert.AreEqual(expected, actual);
         }
-
-        // This is what I did instead of that
-        [Test]
-        public void Indexer_GettingValueOfIndexNotExists_ThrowsError()
-        {
-            // Arrange
-            CustomClassList<int> test = new CustomClassList<int>();
-            test.Add(0);
-            test.Add(1);
-            test.Add(2);
-            test.Add(3);
-            int value;
-
-            // Act
-            Action act = () => value = test[4];
-
-            // Assert
-            act.Should().Throw<ArgumentOutOfRangeException>();
-        }
-
-        // [Test]
-        // public void Add_AddItemOverCapacityLimit_ThrowsError()
-        // {
-        //     // arrange
-        //     CustomClassList<int> test = new CustomClassList<int>();
-        //     test.Add(1);
-        //     test.Add(2);
-        //     test.Add(3);
-        //     test.Add(4);
-
-        //     // act
-        //     Action act = () => test.Add(5);
-
-        //     // assert
-            
-        // }
-
-        // [Test]
-        // public void Add_AddToEmptyList_CountGoesUpByOne()
-        // {
-        //     // arrange
-        //     CustomClassList<int> test = new CustomClassList<int>();
-        //     int expected = 1;
-        //     int actual;
-
-        //     // act
-        //     test.Add(1);
-        //     actual = test.Count();
-
-        //     // assert
-        //     Assert.AreEqual(expected, actual);
-        // }
-
-        // [Test]
-        // public void Add_AddItemToListWithTwoItems_ResizedList()
-        // {
-        //     // arrange
-        //     CustomClassList<int> test = new CustomClassList<int>();
-        //     test.Add(1);
-        //     test.Add(2);
-        //     int expected = 3;
-        //     int actual;
-
-        //     // act
-        //     test.Add(3);
-        //     actual = test.Count();
-
-        //     // assert
-        //     Assert.AreEqual(expected, actual);
-        // }
     }
 }

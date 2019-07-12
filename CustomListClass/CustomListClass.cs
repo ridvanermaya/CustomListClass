@@ -20,7 +20,7 @@ namespace CustomClassListProject
         {
             get
             {
-                if (index > count - 1 || index < 0) {
+                if (index >= count || index < 0) {
                     throw new ArgumentOutOfRangeException("Nope");
                 }
                 else {
@@ -55,7 +55,6 @@ namespace CustomClassListProject
                 customList = new T[capacity];
                 customList = temporaryList;
             }
-
             customList[count] = item;
             count++;
         }
