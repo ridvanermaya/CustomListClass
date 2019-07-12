@@ -89,5 +89,19 @@ namespace CustomClassListProject
             }
             return result;
         }
+
+        public static CustomClassList<T> operator + (CustomClassList<T> item1, CustomClassList<T> item2)
+        {
+            CustomClassList<T> resultList = new CustomClassList<T>();
+            for (int i = 0; i < item1.count; i++)
+            {
+                resultList.Add(item1[i]);
+            }
+            for (int i = 0; i < item2.count; i++)
+            {
+                resultList.Add(item2[i]);
+            }
+            return resultList;
+        }
     }
 }
