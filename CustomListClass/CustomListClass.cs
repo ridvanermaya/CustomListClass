@@ -103,5 +103,23 @@ namespace CustomClassListProject
             }
             return resultList;
         }
+
+        public static CustomClassList<T> operator - (CustomClassList<T> item1, CustomClassList<T> item2)
+        {
+            CustomClassList<T> resultList = new CustomClassList<T>();
+            for (int i = 0; i < item1.count; i++)
+            {
+                for (int j = 0; j < item2.count; j++)
+                {
+                    dynamic x = item1[i];
+                    dynamic y = item2[j];
+                    if (x == y) {
+                        item1.Remove(item1[i]);
+                        resultList = item1;
+                    }
+                }
+            }
+            return resultList = item1;;
+        }
     }
 }

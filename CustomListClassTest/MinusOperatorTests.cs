@@ -34,12 +34,15 @@ namespace Tests
             expected.Add(0);
             expected.Add(1);
             expected.Add(2);
+            expected[0] = 0;
+            expected[1] = 1;
+            expected[2] = 2;
 
             // act
             actual = test1 - test2;
 
             // assert
-            Assert.AreEqual(expected, actual);
+            expected.Should().BeSameAs(actual);
         }
 
         [Test]
@@ -67,7 +70,7 @@ namespace Tests
             actual = test1 - test2;
             
             // assert
-            Assert.AreEqual(expected, actual);
+            expected.Should().BeSameAs(actual);
         }
 
         [Test]
