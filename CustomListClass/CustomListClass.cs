@@ -73,10 +73,16 @@ namespace CustomClassListProject
                     {
                         customList[j] = customList[j + 1];
                     }
+                    customList[count] = default;
                     break;
                 }
             }
             return isFound;
+        }
+
+        public override string ToString()
+        {
+            return "Hello World";
         }
     }
 }
