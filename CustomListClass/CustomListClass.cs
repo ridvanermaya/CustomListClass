@@ -82,7 +82,12 @@ namespace CustomClassListProject
 
         public override string ToString()
         {
-            return "Hello World";
+            string result = "";
+            for (int i = 0; i < count; i++)
+            {
+                result += customList[i].ToString();
+            }
+            return result;
         }
     }
 }

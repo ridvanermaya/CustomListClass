@@ -90,7 +90,7 @@ namespace Tests
             actual = test.ToString();
 
             // assert
-            actual.Should().Be("truefalsetrue");
+            actual.Should().Be("TrueFalseTrue");
         }
     } 
 }
