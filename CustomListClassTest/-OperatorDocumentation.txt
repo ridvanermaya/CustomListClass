@@ -10,7 +10,7 @@ C#
 Parameters
     item1 CustomClassList<T>
     item2 CustomClassList<T>
-   ---- Always removes matching items in the second list from the first list.
+    Creates a new list and adds items to the list that don't match with the items in the second list.
 ----------
 
 -------

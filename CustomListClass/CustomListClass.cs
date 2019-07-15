@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace CustomClassListProject
 {
@@ -60,46 +61,6 @@ namespace CustomClassListProject
             count++;
         }
 
-        public CustomClassList<T> Zip(CustomClassList<T> item)
-        {
-            int numberToLoop;
-            bool areListsEqual;
-            int i;
-            if (count > item.count) {
-                numberToLoop = item.count;
-                areListsEqual = false;
-            }
-            else if (count < item.count) {
-                numberToLoop = count;
-                areListsEqual = false;
-            }
-            else {
-                numberToLoop = count;
-                areListsEqual = true;
-            }
-            CustomClassList<T> resultList = new CustomClassList<T>();
-            for (i = 0; i < numberToLoop; i++)
-            {
-                resultList.Add(customList[i]);
-                resultList.Add(item[i]);
-            }
-            if (!areListsEqual) {
-                if (count > item.count) {
-                    for (int j = i; j < count; j++)
-                    {
-                        resultList.Add(customList[j]);
-                    }
-                }
-                else {
-                    for (int j = i; j < item.count; j++)
-                    {
-                        resultList.Add(item[j]);
-                    }
-                }
-            }
-            return resultList;
-        }
-
         public bool Remove(T item)
         {
             bool isFound = false;
@@ -129,14 +90,6 @@ namespace CustomClassListProject
                 result += customList[i].ToString();
             }
             return result;
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            for (int i = 0; i < count; i++)
-            {
-                yield return customList[i];
-            }
         }
 
         public static CustomClassList<T> operator + (CustomClassList<T> item1, CustomClassList<T> item2)
@@ -177,6 +130,63 @@ namespace CustomClassListProject
                 }
             }
             return resultList;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return customList[i];
+            }
+        }
+
+        public CustomClassList<T> Zip(CustomClassList<T> item)
+        {
+            CustomClassList<T> resultList = new CustomClassList<T>();
+            int numberToLoop;
+            bool areListsEqual;
+            int i;
+            if (count > item.count) {
+                numberToLoop = item.count;
+                areListsEqual = false;
+            }
+            else if (count < item.count) {
+                numberToLoop = count;
+                areListsEqual = false;
+            }
+            else {
+                numberToLoop = count;
+                areListsEqual = true;
+            }
+
+            for (i = 0; i < numberToLoop; i++)
+            {
+                resultList.Add(customList[i]);
+                resultList.Add(item[i]);
+            }
+            if (!areListsEqual) {
+                if (count > item.count) {
+                    for (int j = i; j < count; j++)
+                    {
+                        resultList.Add(customList[j]);
+                    }
+                }
+                else {
+                    for (int j = i; j < item.count; j++)
+                    {
+                        resultList.Add(item[j]);
+                    }
+                }
+            }
+            return resultList;
+        }
+
+        public void SwapFunction(ref T item1, ref T item2)
+        {
+            T temp;
+            temp = item1;
+            item1 = item2;
+            item2 = temp;
         }
     }
 }
