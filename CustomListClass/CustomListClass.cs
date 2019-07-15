@@ -133,7 +133,10 @@ namespace CustomClassListProject
 
         public IEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < count; i++)
+            {
+                yield return customList[i];
+            }
         }
 
         public static CustomClassList<T> operator + (CustomClassList<T> item1, CustomClassList<T> item2)
