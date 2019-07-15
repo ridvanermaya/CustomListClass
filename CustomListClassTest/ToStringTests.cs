@@ -39,7 +39,7 @@ namespace Tests
         }
 
         [Test]
-        public void ToString_ApplyToAListOfIntegers_CountDontChange()
+        public void ToString_ApplyToAListOfIntegers_CountDoesntChange()
         {
             // arrange
             CustomClassList<int> test = new CustomClassList<int>();
