@@ -114,12 +114,20 @@ namespace CustomClassListProject
                     dynamic x = item1[i];
                     dynamic y = item2[j];
                     if (x == y) {
-                        item1.Remove(item1[i]);
-                        resultList = item1;
+                        // do nothing
+                        break;
+                    }
+                    else if (j < item2.count - 1){
+                        // do nothing
+                        continue;
+                    }
+                    else {
+                        resultList.Add(item1[i]);
+                        break;
                     }
                 }
             }
-            return resultList = item1;;
+            return resultList;
         }
     }
 }

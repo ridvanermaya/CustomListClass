@@ -23,26 +23,27 @@ namespace Tests
             // arrange
             CustomClassList<int> test1 = new CustomClassList<int>();
             CustomClassList<int> test2 = new CustomClassList<int>();
-            CustomClassList<int> expected = new CustomClassList<int>();
-            CustomClassList<int> actual = new CustomClassList<int>();
+            CustomClassList<int> expected1 = new CustomClassList<int>();
+            CustomClassList<int> actual1 = new CustomClassList<int>();
             test1.Add(0);
             test1.Add(1);
             test1.Add(2);
             test2.Add(3);
             test2.Add(4);
             test2.Add(5);
-            expected.Add(0);
-            expected.Add(1);
-            expected.Add(2);
-            expected[0] = 0;
-            expected[1] = 1;
-            expected[2] = 2;
+            expected1.Add(0);
+            expected1.Add(1);
+            expected1.Add(2);
+            string expected = expected1.ToString();
+            string actual;
 
             // act
-            actual = test1 - test2;
+            actual1 = test1 - test2;
+            actual = actual1.ToString();
+            
 
             // assert
-            expected.Should().BeSameAs(actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -51,8 +52,8 @@ namespace Tests
             // arrange
             CustomClassList<int> test1 = new CustomClassList<int>();
             CustomClassList<int> test2 = new CustomClassList<int>();
-            CustomClassList<int> expected = new CustomClassList<int>();
-            CustomClassList<int> actual = new CustomClassList<int>();
+            CustomClassList<int> expected1 = new CustomClassList<int>();
+            CustomClassList<int> actual1 = new CustomClassList<int>();
             test1.Add(0);
             test1.Add(1);
             test1.Add(2);
@@ -62,15 +63,18 @@ namespace Tests
             test2.Add(1);
             test2.Add(3);
             test2.Add(5);
-            expected.Add(0);
-            expected.Add(2);
-            expected.Add(4);
+            expected1.Add(0);
+            expected1.Add(2);
+            expected1.Add(4);
+            string expected = expected1.ToString();
+            string actual;
             
             // act
-            actual = test1 - test2;
+            actual1 = test1 - test2;
+            actual = actual1.ToString();
             
             // assert
-            expected.Should().BeSameAs(actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
@@ -79,8 +83,8 @@ namespace Tests
             // arrange
             CustomClassList<int> test1 = new CustomClassList<int>();
             CustomClassList<int> test2 = new CustomClassList<int>();
-            CustomClassList<int> expected = new CustomClassList<int>();
-            CustomClassList<int> actual = new CustomClassList<int>();
+            CustomClassList<int> expected1 = new CustomClassList<int>();
+            CustomClassList<int> actual1 = new CustomClassList<int>();
             test1.Add(0);
             test1.Add(1);
             test1.Add(2);
@@ -88,11 +92,13 @@ namespace Tests
             test2.Add(3);
             test2.Add(4);
             test2.Add(5);
-            expected.Add(0);
-            expected.Add(2);
+            expected1.Add(0);
+            expected1.Add(2);
+            string expected = expected1.ToString();
 
             // act
-            actual = test1 - test2;
+            actual1 = test1 - test2;
+            string actual = actual1.ToString();
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -104,18 +110,20 @@ namespace Tests
             // arrange
             CustomClassList<int> test1 = new CustomClassList<int>();
             CustomClassList<int> test2 = new CustomClassList<int>();
-            CustomClassList<int> expected = new CustomClassList<int>();
-            CustomClassList<int> actual = new CustomClassList<int>();
+            CustomClassList<int> expected1 = new CustomClassList<int>();
+            CustomClassList<int> actual1 = new CustomClassList<int>();
             test1.Add(0);
             test1.Add(1);
             test1.Add(2);
             test2.Add(1);
             test2.Add(2);
             test2.Add(5);
-            expected.Add(0);
+            expected1.Add(0);
+            string expected = expected1.ToString();
 
             // act
-            actual = test1 - test2;
+            actual1 = test1 - test2;
+            string actual = actual1.ToString();
 
             // assert
             Assert.AreEqual(expected, actual);
