@@ -59,6 +59,11 @@ namespace CustomClassListProject
             count++;
         }
 
+        public CustomClassList<T> Zip(CustomClassList<T> item)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Remove(T item)
         {
             bool isFound = false;
