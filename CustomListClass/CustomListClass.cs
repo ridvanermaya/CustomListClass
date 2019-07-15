@@ -1,8 +1,9 @@
 using System;
+using System.Collections;
 
 namespace CustomClassListProject
 {
-    public class CustomClassList<T>
+    public class CustomClassList<T> : IEnumerable
     {
         T[] customList;
         private int count;
@@ -61,7 +62,42 @@ namespace CustomClassListProject
 
         public CustomClassList<T> Zip(CustomClassList<T> item)
         {
-            throw new NotImplementedException();
+            int numberToLoop;
+            bool areListsEqual;
+            int i;
+            if (count > item.count) {
+                numberToLoop = item.count;
+                areListsEqual = false;
+            }
+            else if (count < item.count) {
+                numberToLoop = count;
+                areListsEqual = false;
+            }
+            else {
+                numberToLoop = count;
+                areListsEqual = true;
+            }
+            CustomClassList<T> resultList = new CustomClassList<T>();
+            for (i = 0; i < numberToLoop; i++)
+            {
+                resultList.Add(customList[i]);
+                resultList.Add(item[i]);
+            }
+            if (!areListsEqual) {
+                if (count > item.count) {
+                    for (int j = i; j < count; j++)
+                    {
+                        resultList.Add(customList[j]);
+                    }
+                }
+                else {
+                    for (int j = i; j < item.count; j++)
+                    {
+                        resultList.Add(item[j]);
+                    }
+                }
+            }
+            return resultList;
         }
 
         public bool Remove(T item)
@@ -93,6 +129,11 @@ namespace CustomClassListProject
                 result += customList[i].ToString();
             }
             return result;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
 
         public static CustomClassList<T> operator + (CustomClassList<T> item1, CustomClassList<T> item2)
